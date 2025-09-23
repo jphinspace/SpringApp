@@ -4,10 +4,10 @@ import com.example.webapp.controller.SalesController;
 import com.example.webapp.service.SalesService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.springframework.context.annotation.Bean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import java.util.Collections;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -16,17 +16,28 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @WebMvcTest(SalesController.class)
-@Import(TestSecurityConfig.class)
+@Import({TestSecurityConfig.class, SalesControllerTest.TestConfig.class})
 @org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc(addFilters = false)
 public class SalesControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @MockBean
+    @Autowired
     private SalesService salesService;
 
-    @MockBean
-    private com.example.webapp.config.RateLimitProperties rateLimitProperties;
+
+    @org.springframework.boot.test.context.TestConfiguration
+    static class TestConfig {
+        @Bean
+        public SalesService salesService() {
+            return Mockito.mock(SalesService.class);
+        }
+
+        @Bean
+        public com.example.webapp.config.RateLimitProperties rateLimitProperties() {
+            return Mockito.mock(com.example.webapp.config.RateLimitProperties.class);
+        }
+    }
 
 
     @Test
