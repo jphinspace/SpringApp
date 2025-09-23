@@ -1,0 +1,10 @@
+INSERT INTO SALES_DATA (date, product, quantity, revenue) VALUES ('2025-01-01', 'Product A', 100, 5000.0);
+INSERT INTO SALES_DATA (date, product, quantity, revenue) VALUES ('2025-01-01', 'Product B', 150, 7500.0);
+INSERT INTO SALES_DATA (date, product, quantity, revenue) VALUES ('2025-02-01', 'Product A', 120, 6000.0);
+INSERT INTO SALES_DATA (date, product, quantity, revenue) VALUES ('2025-02-01', 'Product B', 140, 7000.0);
+INSERT INTO SALES_DATA (date, product, quantity, revenue) VALUES ('2025-03-01', 'Product A', 90, 4500.0);
+INSERT INTO SALES_DATA (date, product, quantity, revenue) VALUES ('2025-03-01', 'Product B', 160, 8000.0);
+INSERT INTO SALES_DATA (date, product, quantity, revenue) VALUES ('2025-04-01', 'Product A', 200, 10000.0);
+INSERT INTO SALES_DATA (date, product, quantity, revenue) VALUES ('2025-04-01', 'Product B', 180, 9000.0);
+INSERT INTO SALES_DATA (date, product, quantity, revenue) VALUES ('2025-05-01', 'Product A', 150, 7500.0);
+INSERT INTO SALES_DATA (date, product, quantity, revenue) VALUES ('2025-05-01', 'Product B', 170, 8500.0);

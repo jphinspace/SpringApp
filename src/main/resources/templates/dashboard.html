@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sales Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            width: 80%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sales Dashboard</h1>
+    
+    <div class="chart-container">
+        <canvas id="revenueChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <canvas id="quantityChart"></canvas>
+    </div>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        const salesData = /*[[${salesData}]]*/ [];
+        
+        // Prepare data for charts
+        const dates = salesData.map(sale => {
+            const date = new Date(sale.date);
+            return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+        });
+        const products = [...new Set(salesData.map(sale => sale.product))];
+        
+        // Prepare revenue data
+        const revenueData = products.map(product => ({
+            label: product,
+            data: salesData.filter(sale => sale.product === product)
+                         .map(sale => sale.revenue),
+            borderColor: product === 'Product A' ? 'rgb(75, 192, 192)' : 'rgb(255, 99, 132)',
+            tension: 0.1
+        }));
+
+        // Prepare quantity data
+        const quantityData = products.map(product => ({
+            label: product,
+            data: salesData.filter(sale => sale.product === product)
+                         .map(sale => sale.quantity),
+            backgroundColor: product === 'Product A' ? 'rgb(75, 192, 192)' : 'rgb(255, 99, 132)',
+        }));
+
+        // Create revenue line chart
+        new Chart(document.getElementById('revenueChart'), {
+            type: 'line',
+            data: {
+                labels: dates,
+                datasets: revenueData
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Revenue Over Time'
+                    }
+                }
+            }
+        });
+
+        // Create quantity bar chart
+        new Chart(document.getElementById('quantityChart'), {
+            type: 'bar',
+            data: {
+                labels: dates,
+                datasets: quantityData
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Quantity Sold Over Time'
+                    }
+                }
+            }
+        });
+        /*]]>*/
+    </script>
+</body>
+</html>

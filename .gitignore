@@ -1,0 +1,50 @@
+# Java & Maven
+/target/
+*.log
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE & Editor
+/.idea/
+/.vscode/
+*.iml
+*.ipr
+*.iws
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment & Secrets
+*.env
+keystore.p12
+
+# Build & Dependency
+/.mvn/
+
+# Test output
+/test-output/
+
+# Misc
+*.swp
+*.swo
+
+# Node (if any frontend assets)
+/node_modules/
+
+# Ignore generated sources
+/generated-sources/
+/generated-test-sources/
+
+# Do not ignore source, config, or resource files
+!/src/
+!/pom.xml
+!/README.md
+!/application.properties
+!/application-dev.properties
+!/application-prod.properties
+!/schema.sql
+!/data.sql
+!/dashboard.html
