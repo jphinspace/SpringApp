@@ -5,7 +5,7 @@
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.1.4-brightgreen?style=plastic&logo=spring&logoColor=white)](https://spring.io/projects/spring-boot)
 [![Maven](https://img.shields.io/badge/Maven-3.9.0-orange?style=plastic&logo=apache-maven&logoColor=white)](https://maven.apache.org/)
 
-A modern Spring Boot web application for data visualization, rate limiting, and security best practices.
+A modern Spring Boot web application for data visualization, with rate limiting and security best practices.
 
 ## Quick Overview
 - Spring Boot 3.1.4
@@ -23,10 +23,9 @@ A modern Spring Boot web application for data visualization, rate limiting, and 
 - Java 21+
 - Maven 3.9+
 
-
 ### Generate self-signed certificate (keystore.p12)
 
-This project expects a PKCS#12 keystore at `src/main/resources/keystore.p12`. To generate a self-signed certificate and put it in the correct location, run the following command from the repository root:
+To generate a self-signed certificate and put it in the correct location, run the following command from the repository root:
 
 ```sh
 keytool -genkeypair \
