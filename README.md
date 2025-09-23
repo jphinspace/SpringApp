@@ -1,28 +1,27 @@
 # Web Application
 
-![Java](https://img.shields.io/badge/Java-17-blue.svg)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.1.4-brightgreen.svg)
-![Maven](https://img.shields.io/badge/Maven-3.9.0+-orange.svg)
-![License: CC0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)
-![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)
+[![License](https://img.shields.io/github/license/jphinspace/webapp?style=plastic&logo=creativecommons&logoColor=white&color=lightgrey)](LICENSE)
+[![Java](https://img.shields.io/badge/Java-21-blue?style=plastic&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.1.4-brightgreen?style=plastic&logo=spring&logoColor=white)](https://spring.io/projects/spring-boot)
+[![Maven](https://img.shields.io/badge/Maven-3.9.0-orange?style=plastic&logo=apache-maven&logoColor=white)](https://maven.apache.org/)
+[![Build](https://img.shields.io/badge/build-passing-brightgreen?style=plastic&logo=github&logoColor=white)](https://github.com/jphinspace/webapp/actions)
 
-A modern Spring Boot web application for data visualization, rate limiting, and security best practices. This project is public domain and ready for open source collaboration.
+A modern Spring Boot web application for data visualization, rate limiting, and security best practices.
 
-## Features
+## Quick Overview
 - Spring Boot 3.1.4
-- Java 17
+- Java 21 (release build)
 - Thymeleaf templating
 - Chart.js data visualization
 - H2 in-memory database
-- JPA/Hibernate
-- Modern Spring Security (HTTPS, headers, CSP)
+- JPA / Hibernate
 - Rate limiting with Bucket4j
-- JUnit 5 test slices
+- Spring Security configuration
 
 ## Getting Started
 
 ### Prerequisites
-- Java 17+
+- Java 21+
 - Maven 3.9+
 
 ### Build the Project
@@ -36,7 +35,9 @@ mvn clean install
 mvn spring-boot:run
 ```
 
-The app will start on [https://localhost:8443](https://localhost:8443) with HTTPS enabled.
+The app will start on https://localhost:8443 with HTTPS enabled.
+
+### Run tests
 
 ### Run Tests
 ```sh
