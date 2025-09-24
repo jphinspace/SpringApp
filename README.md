@@ -1,5 +1,6 @@
 # Web Application
 
+[![GitHub Copilot](https://img.shields.io/badge/GitHub%20Copilot-Enabled-24292F?style=plastic&logo=github&logoColor=white)](https://github.com/features/copilot)
 [![GitHub License](https://img.shields.io/github/license/jphinspace/webapp?style=plastic&logo=creativecommons&logoColor=white)](LICENSE)
 [![Java](https://img.shields.io/badge/Java-21-blue?style=plastic&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.1.4-brightgreen?style=plastic&logo=spring&logoColor=white)](https://spring.io/projects/spring-boot)
