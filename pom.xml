@@ -55,6 +55,19 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- Bootstrap WebJar -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>5.3.2</version>
+        </dependency>
+        
+        <!-- WebJars Locator (helps with versioning) -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator-core</artifactId>
+        </dependency>
+
         <!-- Rate Limiting -->
         <dependency>
             <groupId>com.bucket4j</groupId>

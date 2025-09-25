@@ -1,24 +1,160 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales Dashboard</title>
+    <!-- Bootstrap CSS (WebJar) -->
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .chart-container {
-            width: 80%;
-            margin: 20px auto;
+            height: 400px;
+            margin: 20px 0;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .nav-link:hover {
+            background-color: #f8f9fa;
+            transform: translateX(5px);
+            transition: all 0.3s ease;
+        }
+        .bg-gradient {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .nav-link:hover .text-dark {
+            color: #007bff !important;
         }
     </style>
 </head>
 <body>
-    <h1>Sales Dashboard</h1>
-    
-    <div class="chart-container">
-        <canvas id="revenueChart"></canvas>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                Sales Dashboard
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reports</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Popular Websites Section -->
+    <div class="bg-light py-4 border-bottom">
+        <div class="container">
+            <h3 class="text-center mb-4">Popular Websites</h3>
+            <nav class="nav flex-column mx-auto" style="max-width: 600px;">
+                <a href="https://www.google.com" target="_blank" class="nav-link fw-bold">Google</a>
+                <p class="text-muted small mb-2 ms-3">Search engine for finding information across the web</p>
+                
+                <a href="https://www.youtube.com" target="_blank" class="nav-link fw-bold">YouTube</a>
+                <p class="text-muted small mb-2 ms-3">Video sharing platform for watching and uploading content</p>
+                
+                <a href="https://www.facebook.com" target="_blank" class="nav-link fw-bold">Facebook</a>
+                <p class="text-muted small mb-2 ms-3">Social networking platform for connecting with friends</p>
+                
+                <a href="https://www.amazon.com" target="_blank" class="nav-link fw-bold">Amazon</a>
+                <p class="text-muted small mb-2 ms-3">Online marketplace for shopping and cloud services</p>
+                
+                <a href="https://www.wikipedia.org" target="_blank" class="nav-link fw-bold">Wikipedia</a>
+                <p class="text-muted small mb-2 ms-3">Free encyclopedia with articles on every topic</p>
+                
+                <a href="https://www.twitter.com" target="_blank" class="nav-link fw-bold">Twitter</a>
+                <p class="text-muted small ms-3">Social media platform for news and real-time updates</p>
+            </nav>
+        </div>
     </div>
-    
-    <div class="chart-container">
-        <canvas id="quantityChart"></canvas>
+
+    <!-- Main Dashboard Content -->
+    <div class="container mt-4">
+        <!-- Header -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="display-4 text-center mb-3">Sales Dashboard</h1>
+                <p class="lead text-center text-muted">Track your sales performance with interactive charts</p>
+            </div>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="row mb-4" th:if="${salesData != null and !salesData.empty}">
+            <div class="col-md-3">
+                <div class="card text-white bg-success shadow">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Total Revenue</h5>
+                        <p class="card-text fs-4 fw-bold" th:text="'$' + ${#numbers.formatDecimal(totalRevenue, 1, 2)}">$0.00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-info shadow">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Total Quantity</h5>
+                        <p class="card-text fs-4 fw-bold" th:text="${totalQuantity}">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-warning shadow">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Products</h5>
+                        <p class="card-text fs-4 fw-bold" th:text="${productCount}">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-primary shadow">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Avg Revenue</h5>
+                        <p class="card-text fs-4 fw-bold" th:text="'$' + ${#numbers.formatDecimal(avgRevenue, 1, 2)}">$0.00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="card shadow">
+                    <div class="card-header bg-light">
+                        <h5 class="card-title mb-0">Revenue Over Time</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card shadow">
+                    <div class="card-header bg-light">
+                        <h5 class="card-title mb-0">Quantity Sold Over Time</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="quantityChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script th:inline="javascript">
@@ -86,5 +222,8 @@
         });
         /*]]>*/
     </script>
+
+    <!-- Bootstrap JS (WebJar) -->
+    <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

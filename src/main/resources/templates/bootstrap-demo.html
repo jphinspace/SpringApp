@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Components Demo</title>
+    <!-- Bootstrap CSS (WebJar) -->
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-bootstrap me-2"></i>Bootstrap Demo
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-primary text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold">Bootstrap Integration Demo</h1>
+                    <p class="lead">Demonstrating various Bootstrap components in a Spring Boot application</p>
+                    <a href="#components" class="btn btn-light btn-lg">Explore Components</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container my-5" id="components">
+        <!-- Alerts -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="mb-3">Alerts</h2>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <i class="bi bi-check-circle me-2"></i>
+                    <strong>Success!</strong> Bootstrap has been successfully integrated.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                <div class="alert alert-info" role="alert">
+                    <i class="bi bi-info-circle me-2"></i>
+                    This is an info alert with Bootstrap icons.
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="mb-3">Cards</h2>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-header bg-primary text-white">
+                        <i class="bi bi-bar-chart me-2"></i>Analytics
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Data Visualization</h5>
+                        <p class="card-text">View comprehensive charts and graphs of your sales data.</p>
+                        <a href="/dashboard" class="btn btn-primary">View Dashboard</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-header bg-success text-white">
+                        <i class="bi bi-gear me-2"></i>Settings
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Configuration</h5>
+                        <p class="card-text">Manage your application settings and preferences.</p>
+                        <button class="btn btn-success" disabled>Coming Soon</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-header bg-info text-white">
+                        <i class="bi bi-file-text me-2"></i>Reports
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Generate Reports</h5>
+                        <p class="card-text">Create detailed reports from your sales data.</p>
+                        <button class="btn btn-info" disabled>Coming Soon</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forms -->
+        <div class="row mb-5">
+            <div class="col-lg-6">
+                <h2 class="mb-3">Forms</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="productName" class="form-label">Product Name</label>
+                        <input type="text" class="form-control" id="productName" placeholder="Enter product name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="productCategory" class="form-label">Category</label>
+                        <select class="form-select" id="productCategory">
+                            <option selected>Choose...</option>
+                            <option value="1">Electronics</option>
+                            <option value="2">Clothing</option>
+                            <option value="3">Books</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="productPrice" class="form-label">Price</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" id="productPrice" step="0.01">
+                        </div>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="inStock">
+                        <label class="form-check-label" for="inStock">
+                            Currently in stock
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-plus-circle me-2"></i>Add Product
+                    </button>
+                </form>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="mb-3">Progress & Badges</h2>
+                <p>Server Load: <span class="badge bg-success">Normal</span></p>
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-success" style="width: 75%">75%</div>
+                </div>
+                
+                <p>Database Usage: <span class="badge bg-warning">Moderate</span></p>
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-warning" style="width: 60%">60%</div>
+                </div>
+                
+                <p>Memory Usage: <span class="badge bg-danger">High</span></p>
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-danger" style="width: 85%">85%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tables -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="mb-3">Tables</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Laptop Pro</td>
+                                <td><span class="badge bg-primary">Electronics</span></td>
+                                <td>$1,299.99</td>
+                                <td><span class="badge bg-success">In Stock</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Wireless Headphones</td>
+                                <td><span class="badge bg-primary">Electronics</span></td>
+                                <td>$199.99</td>
+                                <td><span class="badge bg-warning">Low Stock</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Cotton T-Shirt</td>
+                                <td><span class="badge bg-secondary">Clothing</span></td>
+                                <td>$24.99</td>
+                                <td><span class="badge bg-danger">Out of Stock</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 Spring Boot App. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS (WebJar) -->
+    <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

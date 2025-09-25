@@ -18,7 +18,10 @@ public class SecurityConfig {
                         .requestMatchers("/h2-console/**").permitAll()
                         .anyRequest().permitAll())
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/h2-console/**"))
+                        .ignoringRequestMatchers("/h2-console/**")
+                        .disable()) // Disable CSRF completely for simplicity
+                .formLogin(form -> form.disable()) // Disable form login
+                .httpBasic(basic -> basic.disable()) // Disable basic auth
                 .headers(headers -> headers
                         .frameOptions(frame -> frame.disable()) // recommended: disable for H2 console
                         .httpStrictTransportSecurity(hsts -> hsts.includeSubDomains(true).maxAgeInSeconds(31536000))

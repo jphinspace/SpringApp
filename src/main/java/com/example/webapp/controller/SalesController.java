@@ -19,12 +19,42 @@ public class SalesController {
     }
 
     @GetMapping("/")
-    public String showDashboard(Model model) {
+    public String home() {
+        return "bootstrap-demo";
+    }
+
+    @GetMapping("/dashboard")
+    public String dashboard(Model model) {
         List<SalesData> allSales = salesService.getAllSalesData();
         Map<String, List<SalesData>> salesByProduct = salesService.getSalesByProduct();
         
+        // Calculate summary statistics
+        double totalRevenue = allSales.stream().mapToDouble(SalesData::getRevenue).sum();
+        int totalQuantity = allSales.stream().mapToInt(SalesData::getQuantity).sum();
+        long productCount = allSales.stream().map(SalesData::getProduct).distinct().count();
+        double avgRevenue = allSales.stream().mapToDouble(SalesData::getRevenue).average().orElse(0.0);
+        
         model.addAttribute("salesData", allSales);
         model.addAttribute("salesByProduct", salesByProduct);
+        model.addAttribute("totalRevenue", totalRevenue);
+        model.addAttribute("totalQuantity", totalQuantity);
+        model.addAttribute("productCount", productCount);
+        model.addAttribute("avgRevenue", avgRevenue);
         return "dashboard";
+    }
+
+    @GetMapping("/bootstrap-demo")
+    public String bootstrapDemo() {
+        return "bootstrap-demo";
+    }
+
+    @GetMapping("/HELLO")
+    public String index() {
+        return "index";
+    }
+
+    @GetMapping("/HELLO/helloworld.html")
+    public String someRandomMethodName() {
+        return "helloworld";
     }
 }
